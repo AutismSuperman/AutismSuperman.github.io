@@ -6150,7 +6150,6 @@ blockquote.pullquote.right {
 }
 .search-dialog .search-nav {
   margin: 0 0 14px;
-  color: #49b1f5;
   font-size: 1.4em;
   line-height: 1;
 }
@@ -6191,10 +6190,10 @@ blockquote.pullquote.right {
   padding: 5px 14px;
   width: 100%;
   outline: none;
-  border: 2px solid #49b1f5;
+  border: 2px solid #1f2d3d;
   border-radius: 40px;
   background: var(--search-bg);
-  color: var(--search-input-color);
+  color: var(--text-highlight-color);
   -webkit-appearance: none;
 }
 #local-search .search-dialog .search-wrap {
