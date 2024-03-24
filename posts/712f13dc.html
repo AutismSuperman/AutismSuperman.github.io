@@ -1,0 +1,281 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>浅谈技术债 | AutismSuperman</title><meta name="author" content="FuLin"><meta name="copyright" content="FuLin"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="技术债是什么？出自于沃德·坎宁安之口，他首次将技术的复杂比作为负债，简称技术负债（技术债）。软件开发本来就是一项很复杂的工程，所以很多人都软件开发当作软件工程看待。开发出来的软件是用来服务于各个领域（金融，医疗，购物等），我们程序员不一定能完全了解某个领域（术业有专攻），所以就没法很好的把控这个领域的软件架构，必然就会产生技术负债。技术债是无法避免的，只是产生技术债或多或少的问题。 为什么会有技">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浅谈技术债">
+<meta property="og:url" content="https://www.fulinlin.com/posts/712f13dc.html">
+<meta property="og:site_name" content="AutismSuperman">
+<meta property="og:description" content="技术债是什么？出自于沃德·坎宁安之口，他首次将技术的复杂比作为负债，简称技术负债（技术债）。软件开发本来就是一项很复杂的工程，所以很多人都软件开发当作软件工程看待。开发出来的软件是用来服务于各个领域（金融，医疗，购物等），我们程序员不一定能完全了解某个领域（术业有专攻），所以就没法很好的把控这个领域的软件架构，必然就会产生技术负债。技术债是无法避免的，只是产生技术债或多或少的问题。 为什么会有技">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.fulinlin.com/img/avatar.png">
+<meta property="article:published_time" content="2019-07-25T14:04:33.000Z">
+<meta property="article:modified_time" content="2024-03-24T07:11:03.557Z">
+<meta property="article:author" content="FuLin">
+<meta property="article:tag" content="杂谈">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.fulinlin.com/img/avatar.png"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="https://www.fulinlin.com/posts/712f13dc.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '浅谈技术债',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-03-24 07:11:03'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 12 || hour >= 17
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.0.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">3</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img fixed" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="AutismSuperman"><span class="site-name">AutismSuperman</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">浅谈技术债</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2019-07-25T14:04:33.000Z" title="发表于 2019-07-25 14:04:33">2019-07-25</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-03-24T07:11:03.557Z" title="更新于 2024-03-24 07:11:03">2024-03-24</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%9D%82%E8%B0%88%E5%90%90%E6%A7%BD/">杂谈吐槽</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="浅谈技术债"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="post-content" id="article-container"><p><a name="59xki"></a></p>
+<h2 id="技术债是什么？"><a href="#技术债是什么？" class="headerlink" title="技术债是什么？"></a><strong>技术债是什么？</strong></h2><p>出自于沃德·坎宁安之口，他首次将技术的复杂比作为负债，简称技术负债（技术债）。软件开发本来就是一项很复杂的工程，所以很多人都软件开发当作软件工程看待。开发出来的软件是用来服务于各个领域（金融，医疗，购物等），我们程序员不一定能完全了解某个领域（<strong>术业有专攻</strong>），所以就没法很好的把控这个领域的软件架构，必然就会产生技术负债。技术债是无法避免的，只是产生技术债或多或少的问题。</p>
+<p>为什么会有技术债呢？</p>
+<p>我认为技术债大概分为三大类。</p>
+<p><a name="4841f34a"></a></p>
+<h2 id="文档负债（包括需求分析负债，开发文档负债，测试文档负债）"><a href="#文档负债（包括需求分析负债，开发文档负债，测试文档负债）" class="headerlink" title="文档负债（包括需求分析负债，开发文档负债，测试文档负债）"></a><strong>文档负债（包括需求分析负债，开发文档负债，测试文档负债）</strong></h2><p><a name="d98920bb"></a></p>
+<h3 id="需求分析负债"><a href="#需求分析负债" class="headerlink" title="需求分析负债"></a><strong>需求分析负债</strong></h3><p>不懂需求分析的软件开发工程师不是好的软件开发工程师，遇到问题一定要与上级领导或者客户及时反馈，及时沟通，某些需求不能做就是不能做，<strong>要持有一种质疑的心</strong>。找正确的途径去反馈问题而不是背地里去发恼骚，要懂得有效的沟通方式，让客户或者是领导理解技术实现痛点。从项目开始就必须要做好调研，不然软件开发工程师没有理解好项目需求而盲目开发项目，必然导致领域业务与开发业务不匹配， 从而付出更多的时间与精力去开发项目。不仅仅如此，调研期间必须要跟开发的经理做好沟通。</p>
+<p><a name="5aaa1d7e"></a></p>
+<h3 id="开发文档负债"><a href="#开发文档负债" class="headerlink" title="开发文档负债"></a><strong>开发文档负债</strong></h3><p>软件开发文档不齐全，或者是软件文档功能与项目代码功能不一致。</p>
+<p>有两种以下情况：</p>
+<ul>
+<li>项目没有制定开发文档。没有制定代码规范文档，接口文档等相关技术文档。光看代码不看文档就够辛苦了，即使语义化变量名与函数名，也难易快速理解。（少见）</li>
+<li>项目没有更新开发文档。项目开发初期还有文档，后来文档没有对应没有更新，因为有些需求几乎都是临时新增的，导致后期项目迭代的时候就造成大量的冗余代码。（常见）</li>
+</ul>
+<p><strong>软件开发文档是项目最系统最全面的反映，看文档比看代码更容易理解项目的功能模块</strong>。</p>
+<p><a name="e04d6111"></a></p>
+<h3 id="测试文档负债"><a href="#测试文档负债" class="headerlink" title="测试文档负债"></a><strong>测试文档负债</strong></h3><p>体现于软件测试覆盖率低，测试用例不足。</p>
+<p>在大多数的企业中，为了控制人力成本，软件测试都是由软件开发工程师去完成，而不是由专业的软件测试人员去负责，这样做往往会忽略了一些软件漏洞（当局者迷，旁观者清），也给技术债埋下了更多的种子。一个企业如果不重视软件测试的话，做出来的软件项目绝对是一个不合格的产品。</p>
+<p><a name="4b34299f"></a></p>
+<h2 id="代码负债（包括架构负债，编码负债，业务负债）"><a href="#代码负债（包括架构负债，编码负债，业务负债）" class="headerlink" title="代码负债（包括架构负债，编码负债，业务负债）"></a>代码负债（包括架构负债，编码负债，业务负债）</h2><p><a name="cef02ea1"></a></p>
+<h3 id="架构负债"><a href="#架构负债" class="headerlink" title="架构负债"></a><strong>架构负债</strong></h3><p><strong>前期项目架构评估不够充分，导致项目组织不合理，软件耦合度高，后期项目难以拓展与维护</strong>。</p>
+<p>正所谓牵一发而动全身，业务需求不断新增，软件项目很难迭代，稍有不慎就容易出现漏洞，后来发现代码没法改，不得不推倒重来，重新开发项目。</p>
+<p><a name="f5469fe6"></a></p>
+<h3 id="编码负债"><a href="#编码负债" class="headerlink" title="编码负债"></a><strong>编码负债</strong></h3><p><strong>编码质量不高</strong>，导致开发团队难以协同工作。当遇到软件产品迭代就会出现一堆技术债，软件产品更是漏洞百出，难以维护。</p>
+<p>体现在以下几个方面</p>
+<ul>
+<li>代码命名规范：代码命名没有规范，存在大量杂乱不堪的命名代码。</li>
+<li>代码复杂度：条件语句过多，流程控制过于复杂，代码嵌套过多。（常见回调地狱）</li>
+<li>代码耦合度：代码中参数，类，接口高耦合，需要大量修改代码。</li>
+<li>代码行数：存在大量未使用的代码。</li>
+</ul>
+<p>良好的，统一的编码规范更好维护以及迭代项目，有利于代码的重构，一定程度上减少技术债。</p>
+<p><a name="ebbb0efa"></a></p>
+<h2 id="管理负债（包括工期负债，人员负债，协同负债，成本负债）"><a href="#管理负债（包括工期负债，人员负债，协同负债，成本负债）" class="headerlink" title="管理负债（包括工期负债，人员负债，协同负债，成本负债）"></a><strong>管理负债（包括工期负债，人员负债，协同负债，成本负债）</strong></h2><p><a name="27f6db0c"></a></p>
+<h3 id="工期负债"><a href="#工期负债" class="headerlink" title="工期负债"></a><strong>工期负债</strong></h3><p><strong>项目期限也是技术债产生原因之一</strong>。现在的项目正如马士兵老师说的那样，现在的项目赶紧做，做完之后赶紧拿钱，说白了就是赚快钱。企业为了抢占市场占有率，必然想短期出产品，因此软件开发工程师必然只能沿用一些老解决方案，加快想项目开发进度。开发出来的产品质量和以前没有太大区别，软件生命周期短。</p>
+<p><code>PS 吐槽：想做高大上不花成本和时间怎么可能呢？</code></p>
+<p><a name="96fee94f"></a></p>
+<h3 id="人员负债"><a href="#人员负债" class="headerlink" title="人员负债"></a><strong>人员负债</strong></h3><p>一个人员流动性大的开发团队导致项目开发难以开展或者是开发进度缓慢，再加上团队中的开发人员能力不尽相同，各有各的风格，即使规范了代码风格，但每个人的代码实现思路也不尽相同。技术债也随着人员流动而加大。</p>
+<p><a name="8d6cd195"></a></p>
+<h3 id="协同负债"><a href="#协同负债" class="headerlink" title="协同负债"></a><strong>协同负债</strong></h3><p>让开发团队的人知道“我是谁，我在哪，我在干什么”。</p>
+<p>有两种以下值得注意：</p>
+<ul>
+<li>管理者必定充分认识自己的定位，该做什么就做什么，不要过分干涉组员的工作，但要监督组员工作质量。</li>
+<li>管理者必定认真分配组员的开发任务，分工明确，各尽其职，避免重复开发模块。</li>
+</ul>
+<p>良好的协同可以避免一些重复工作，减少软件冗余代码，促使项目开发效率会事半功倍，保证如期进行，从而减少技术债增加。</p>
+<p><a name="8e5dee3b"></a></p>
+<h3 id="成本负债"><a href="#成本负债" class="headerlink" title="成本负债"></a><strong>成本负债</strong></h3><p>项目的软硬件环境配置决定项目的成本负债。控制好成本负债才可以获得更多的收益。<strong>聪明的管理者绝不会贪小便宜，只顾眼前的成本利益而造成更大的陈本负债，该花钱的地方就有花，不要节省。</strong></p>
+<p><code>PS 吐槽：做产品的为什么不思考思考呢？</code></p>
+<p><a name="74ffd8bb"></a></p>
+<h2 id="技术债需要还吗？"><a href="#技术债需要还吗？" class="headerlink" title="技术债需要还吗？"></a><strong>技术债需要还吗？</strong></h2><p>不还？还出来混？！！</p>
+<p>还债的好处，避免软件漏洞，提高软件健壮性，能保证一段时间不用加班（996）。</p>
+<p>还债的缺点，无法支撑大规模的新项目需求，在原有基础上重构业务逻辑代码有一定的技术风险。</p>
+<p><strong>不还债的好处，等待项目推倒重来，重新架构软件模型，提高软件扩展性与稳定性。</strong></p>
+<p><strong>不还债的缺点，新项目必然花费的人力成本与时间更多，加班难以避免。</strong></p>
+<p><code>PS 吐槽：越来越臃肿造成不必要的996？？？</code></p>
+<p>还不还债，自己看着办吧。</p>
+<p>总之，一个好产品好公司的诞生，是必须要跟上时代的！才能赢得同行的尊敬。</p>
+<p><a target="_blank" rel="noopener" href="http://www.cnblogs.com/Sroot/p/9110835.html">本文参考</a></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://www.fulinlin.com">FuLin</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://www.fulinlin.com/posts/712f13dc.html">https://www.fulinlin.com/posts/712f13dc.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://www.fulinlin.com" target="_blank">AutismSuperman</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%9D%82%E8%B0%88/">杂谈</a></div><div class="post_share"><div class="social-share" data-image="/img/avatar.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>赞助</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.png" target="_blank"><img class="post-qr-code-img" src="/img/wechat.png" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/alipay.png" target="_blank"><img class="post-qr-code-img" src="/img/alipay.png" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/posts/e8778e1.html" title="浅谈死海效应"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">浅谈死海效应</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/posts/fa97efe3.html" title="浅谈极限编程"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-07-25</div><div class="title">浅谈极限编程</div></div></a></div><div><a href="/posts/e8778e1.html" title="浅谈死海效应"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-07-25</div><div class="title">浅谈死海效应</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="giscus-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">FuLin</div><div class="author-info__description">胆小认生，不易相处</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">3</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/AutismSuperman"><i class="fab fa-github"></i><span>关注我</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/AutismSuperman" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:fulinlin9527@outlook.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">One day you'll leave this world behind So live a life you will remember</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%80%E6%9C%AF%E5%80%BA%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">1.</span> <span class="toc-text">技术债是什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E6%A1%A3%E8%B4%9F%E5%80%BA%EF%BC%88%E5%8C%85%E6%8B%AC%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90%E8%B4%9F%E5%80%BA%EF%BC%8C%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E8%B4%9F%E5%80%BA%EF%BC%8C%E6%B5%8B%E8%AF%95%E6%96%87%E6%A1%A3%E8%B4%9F%E5%80%BA%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">文档负债（包括需求分析负债，开发文档负债，测试文档负债）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90%E8%B4%9F%E5%80%BA"><span class="toc-number">2.1.</span> <span class="toc-text">需求分析负债</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3%E8%B4%9F%E5%80%BA"><span class="toc-number">2.2.</span> <span class="toc-text">开发文档负债</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E6%96%87%E6%A1%A3%E8%B4%9F%E5%80%BA"><span class="toc-number">2.3.</span> <span class="toc-text">测试文档负债</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E8%B4%9F%E5%80%BA%EF%BC%88%E5%8C%85%E6%8B%AC%E6%9E%B6%E6%9E%84%E8%B4%9F%E5%80%BA%EF%BC%8C%E7%BC%96%E7%A0%81%E8%B4%9F%E5%80%BA%EF%BC%8C%E4%B8%9A%E5%8A%A1%E8%B4%9F%E5%80%BA%EF%BC%89"><span class="toc-number">3.</span> <span class="toc-text">代码负债（包括架构负债，编码负债，业务负债）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%B6%E6%9E%84%E8%B4%9F%E5%80%BA"><span class="toc-number">3.1.</span> <span class="toc-text">架构负债</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%96%E7%A0%81%E8%B4%9F%E5%80%BA"><span class="toc-number">3.2.</span> <span class="toc-text">编码负债</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%A1%E7%90%86%E8%B4%9F%E5%80%BA%EF%BC%88%E5%8C%85%E6%8B%AC%E5%B7%A5%E6%9C%9F%E8%B4%9F%E5%80%BA%EF%BC%8C%E4%BA%BA%E5%91%98%E8%B4%9F%E5%80%BA%EF%BC%8C%E5%8D%8F%E5%90%8C%E8%B4%9F%E5%80%BA%EF%BC%8C%E6%88%90%E6%9C%AC%E8%B4%9F%E5%80%BA%EF%BC%89"><span class="toc-number">4.</span> <span class="toc-text">管理负债（包括工期负债，人员负债，协同负债，成本负债）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B7%A5%E6%9C%9F%E8%B4%9F%E5%80%BA"><span class="toc-number">4.1.</span> <span class="toc-text">工期负债</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%BA%E5%91%98%E8%B4%9F%E5%80%BA"><span class="toc-number">4.2.</span> <span class="toc-text">人员负债</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%8F%E5%90%8C%E8%B4%9F%E5%80%BA"><span class="toc-number">4.3.</span> <span class="toc-text">协同负债</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%88%90%E6%9C%AC%E8%B4%9F%E5%80%BA"><span class="toc-number">4.4.</span> <span class="toc-text">成本负债</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%80%E6%9C%AF%E5%80%BA%E9%9C%80%E8%A6%81%E8%BF%98%E5%90%97%EF%BC%9F"><span class="toc-number">5.</span> <span class="toc-text">技术债需要还吗？</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/fa97efe3.html" title="浅谈极限编程">浅谈极限编程</a><time datetime="2019-07-25T14:08:29.000Z" title="发表于 2019-07-25 14:08:29">2019-07-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/e8778e1.html" title="浅谈死海效应">浅谈死海效应</a><time datetime="2019-07-25T14:05:21.000Z" title="发表于 2019-07-25 14:05:21">2019-07-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/712f13dc.html" title="浅谈技术债">浅谈技术债</a><time datetime="2019-07-25T14:04:33.000Z" title="发表于 2019-07-25 14:04:33">2019-07-25</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By FuLin</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/"><img class="icp-icon" src="/img/icp.png"><span>京ICP备19023481号-1</span></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>(()=>{
+  const getGiscusTheme = theme => {
+    return theme === 'dark' ? 'dark' : 'light'
+  }
+
+  const loadGiscus = () => {
+    const config = Object.assign({
+      src: 'https://giscus.app/client.js',
+      'data-repo': 'AutismSuperman/hexo-source',
+      'data-repo-id': 'R_kgDOLkeS4g',
+      'data-category-id': 'DIC_kwDOLkeS4s4CeMJe',
+      'data-mapping': 'pathname',
+      'data-theme': getGiscusTheme(document.documentElement.getAttribute('data-theme')),
+      'data-reactions-enabled': '1',
+      crossorigin: 'anonymous',
+      async: true
+    },null)
+
+    const ele = document.createElement('script')
+    for (let key in config) {
+      ele.setAttribute(key, config[key])
+    }
+    document.getElementById('giscus-wrap').appendChild(ele)
+  }
+
+  const changeGiscusTheme = theme => {
+    const sendMessage = message => {
+      const iframe = document.querySelector('iframe.giscus-frame')
+      if (!iframe) return
+      iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app')
+    }
+
+    sendMessage({
+      setConfig: {
+        theme: getGiscusTheme(theme)
+      }
+    });
+  }
+
+  btf.addGlobalFn('themeChange', changeGiscusTheme, 'giscus')
+
+  if ('Giscus' === 'Giscus' || !false) {
+    if (false) btf.loadComment(document.getElementById('giscus-wrap'), loadGiscus)
+    else loadGiscus()
+  } else {
+    window.loadOtherComment= loadGiscus
+  }
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.13.0"></script></div></div></body></html>
